@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Getx"),
+        title: Text("Getx Fetch"),
       ),
       body: Column(
         children: [
