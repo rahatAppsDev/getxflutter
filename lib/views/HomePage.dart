@@ -36,6 +36,9 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             child:  Obx( () {
+              if (productController.isLoading.value)
+                return Center(child: CircularProgressIndicator(),);
+              else
                 return StaggeredGridView.countBuilder(
                     crossAxisCount: 2,
                     itemCount: productController.productList.length,

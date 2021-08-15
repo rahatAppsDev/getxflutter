@@ -7,6 +7,8 @@ import 'package:getxfetch/services/remote_services.dart';
 
 class ProductController extends GetxController {
 
+  var isLoading = true.obs;
+
   var productList = <dynamic>[].obs;
   var remoteServices = RemoteServices();
 
@@ -20,11 +22,17 @@ class ProductController extends GetxController {
   }
 
   void fetchProducts() async {
+    isLoading(true);
 
-    var products = await RemoteServices.fetchProductsFromServer();
-    print("fetch products $products");
-    if (products != null) {
-      productList.value = products;
+    try {
+      var products = await RemoteServices.fetchProductsFromServer();
+      print("fetch products $products");
+      if (products != null) {
+        productList.value = products;
+
+      }
+    } finally{
+        isLoading(false);
     }
 
   }
